@@ -34,9 +34,9 @@ public class RentalAgreement {
                 "Check out date: " + this.checkoutDate + "\n" +
                 "Due date: " + this.dueDate + "\n" +
                 "Charge days: " + this.chargeDays + "\n" +
-                "Pre-discount charge:$" + this.preDiscountCharge + "\n" +
+                "Pre-discount charge: $" + this.preDiscountCharge + "\n" +
                 "Discount percent: " + (int)this.discountPercentage + "%\n" +
-                "Discount amount:$" + this.discountAmount + "\n" +
-                "Final Charge:$" + this.finalCharge);
+                "Discount amount: $" + this.discountAmount + "\n" +
+                "Final Charge: $" + this.finalCharge);
     }
 }

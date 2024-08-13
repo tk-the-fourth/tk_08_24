@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class RentalService {
     private static final DateTimeFormatter INPUT_DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("M/d/yy");
-    private static final DateTimeFormatter OUTPUT_DATE_TIME_FORMATTER2 = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+    private static final DateTimeFormatter OUTPUT_DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("MM/dd/yyyy");
     private static final String INVALID_DATE_FORMAT = "Date format must be mm/dd/yyyy";
     private static final String INVALID_RENTAL_DAYS = "Number of rental days must be greater than 0.";
     private static final String INVALID_DISCOUNT_PERCENTAGE = "Discount percentage must be 0 - 100.";
@@ -57,7 +57,7 @@ public class RentalService {
                     .toolCode(toolRental.getCode())
                     .toolType(toolRental.getType())
                     .toolBrand(toolRental.getBrand())
-                    .rentalDays(rentalDays).checkoutDate(checkoutDate.format(OUTPUT_DATE_TIME_FORMATTER2))
+                    .rentalDays(rentalDays).checkoutDate(checkoutDate.format(OUTPUT_DATE_TIME_FORMATTER))
                     .dueDate(calculateDueDate(rentalDays, checkoutDate))
                     .dailyRentalCharge(toolRental.getDailyCharge())
                     .discountPercentage(discountPercentage).build();
@@ -86,7 +86,7 @@ public class RentalService {
     }
 
     private String calculateDueDate(int rentalDays, LocalDate checkoutDate) {
-        return checkoutDate.plusDays(rentalDays - 1).format(OUTPUT_DATE_TIME_FORMATTER2);
+        return checkoutDate.plusDays(rentalDays - 1).format(OUTPUT_DATE_TIME_FORMATTER);
     }
 
     private int calculateChargeDays(int rentalDays, LocalDate checkoutDate, Tool tool) {
